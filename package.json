@@ -1,0 +1,30 @@
+{
+  "name": "rsql-to-loopback",
+  "version": "1.0.0",
+  "description": "NodeJS RSQL to Loopback Parser",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "RSQL",
+    "FIQL",
+    "parser",
+    "Loopback"
+  ],
+  "bugs": {
+    "url": "https://github.com/Yingliang-Du/rsql-to-loopback/issues",
+    "email": "yingliang_d@yahoo.com"
+  },
+  "author": "Yingliang Du",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yingliang-Du/rsql-to-loopback.git"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "node-rsql-parser": "^1.0.2"
+  }
+}
