@@ -1,4 +1,4 @@
-# Node RSQL / FIQL Parser
+# Node RSQL to LoopBack query Converter
 ## Gratitute
 Without GOD's blessing, I am not able to do anything useful!  
 Thanks to Prashanth Ponugoti and Kameswara Eati for their guidance, inspiration and contribution.
@@ -9,11 +9,14 @@ An open source implementation convert RSQL to [LoopBack queries](https://docs.st
 
 ## HowTos
 ```
+// install rsql-to-loopback in your project
+npm i -S rsql-to-loopback
+
 // import RSQL to LoopBack model
 var rsql2Loopback = require('rsql-to-loopback');
 
 // convert RSQL string to LoopBack query where clause
-rsql2Loopback(rsqlString);
+var loopbackQuery = rsql2Loopback(rsqlString);
 ```
 
 ## Examples

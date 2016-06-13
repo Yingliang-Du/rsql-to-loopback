@@ -1,7 +1,7 @@
 {
   "name": "rsql-to-loopback",
   "version": "1.0.0",
-  "description": "NodeJS RSQL to Loopback Parser",
+  "description": "NodeJS RSQL to LoopBack query Converter",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
