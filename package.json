@@ -24,7 +24,9 @@
     "url": "https://github.com/Yingliang-Du/rsql-to-loopback.git"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.13.4",
-    "node-rsql-parser": "^1.0.2"
+    "node-rsql-parser": "^1.0.2",
+    "type-assert": "^2.1.0"
   }
 }

@@ -1,7 +1,7 @@
 var express = require('express');
-var rsqlParser = require('node-rsql-parser');
-var rsql2Loopback = require('.');
-var logger = require('node-rsql-parser/src/logger');
+var bodyParser = require('body-parser');
+var rsql2loopback = require('.');
+var logger = require('./src/logger');
 
 var app = express();
 var router = express.Router();
@@ -21,12 +21,28 @@ router.use(function (req,res,next) {
 router.get('/rsql', function(req, res) {
 
    // print out the request
-   console.log(req.params);
-   console.log(req.query);
+   logger.debug('req.params', req.params);
+   logger.debug('req.query', req.query);
    var rsqlString = req.query.q;
 
-//   res.send(JSON.stringify(rsqlParser.parsing(rsqlString), null, 4));
-   res.send(JSON.stringify(rsql2Loopback(rsqlString), null, 4));
+   res.send(JSON.stringify(rsql2loopback.convert(rsqlString), null, 4));
+   res.end();
+});
+
+/**
+ * endpoint for testing rsql post request with body contains keys map
+ */
+app.use(bodyParser.json());
+router.post('/rsql', function(req, res) {
+
+   // print out the request
+   logger.debug('req.params', req.params);
+   logger.debug('req.query', req.query);
+   logger.debug('req.body', req.body);
+   var rsqlString = req.query.q;
+   var keys = req.body;
+
+   res.send(JSON.stringify(rsql2loopback.convert4keys(rsqlString, keys), null, 4));
    res.end();
 });
 
