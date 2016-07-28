@@ -13,10 +13,14 @@ An open source implementation convert RSQL to [LoopBack queries](https://docs.st
 npm i -S rsql-to-loopback
 
 // import RSQL to LoopBack model
-var rsql2Loopback = require('rsql-to-loopback');
+var rsql2loopback = require('rsql-to-loopback');
 
 // convert RSQL string to LoopBack query where clause
-var loopbackQuery = rsql2Loopback(rsqlString);
+var loopbackQuery = rsql2loopback.convert(rsqlString);
+
+// convert RSQL string to loopBack query where clause,
+// check RSQL string only contains keys defined in keys map
+loopbackQuery = rsql2loopback.convert4keys(rsqlString, keys);
 ```
 
 ## Examples
