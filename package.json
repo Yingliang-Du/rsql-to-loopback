@@ -1,6 +1,6 @@
 {
   "name": "rsql-to-loopback",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "NodeJS RSQL to LoopBack query Converter",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.13.4",
-    "node-rsql-parser": "^1.0.2",
+    "node-rsql-parser": "^1.0.3",
     "type-assert": "^2.1.0"
   }
 }

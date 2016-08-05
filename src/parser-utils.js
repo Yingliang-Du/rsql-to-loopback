@@ -71,7 +71,10 @@ function parseRsqlUnits(operationUnits, _or_and, keys) {
 		else {
 			// this unit is an operation unit
 			_element = parseOperationUnit(operationUnits[i], keys);
-			_or_and.push(_element);
+			// push only when the _element is not empty
+			if (!objUtils.isEmpty(_element)) {
+				_or_and.push(_element);
+			}
 		}
 	}
 }
@@ -100,7 +103,9 @@ function parseOperationUnit(unitString, keys) {
       		// resolve key base on keys map
       		key = resolveKey(unitMap.key, keys);
       		// '==' --> key: value
-      		element[key] = unitMap.value;
+      		if (key) {
+      			element[key] = unitMap.value;
+      		}
       	}
 	}
 	else {
@@ -112,9 +117,11 @@ function parseOperationUnit(unitString, keys) {
       		// resolve key base on keys map
       		key = resolveKey(unitMap.key, keys);
       		// build only when contains both key and value
-      		var operation = {}
-      		operation[operatorMap.get(operator)] = unitMap.value;
-      		element[key] = operation;
+      		if (key) {
+	      		var operation = {}
+	      		operation[operatorMap.get(operator)] = unitMap.value;
+	      		element[key] = operation;
+	      	}
       	}
     }
 
@@ -125,18 +132,24 @@ function parseOperationUnit(unitString, keys) {
 
 /**
  *	Check if the operation key is in keys map?
- *		yes: replace the operation key with corresponding value in the map
+ *		yes: Check if key map contains value?
  *		no: throw error 
+ *	Check if key map contains value?
+ *		yes: replace the operation key with corresponding value in the map
+ *		no: ignore that key
  *	When keys map is null or empty: use opKey
  */
 function resolveKey(opKey, keys) {
 	if (objUtils.isEmpty(keys)) {
+		// when keys map is null or empty, use the param key in rsql string
 		return opKey;
 	}
 	else {
-		var key = keys[opKey];
-		if (key) {
-			return key;
+		if (opKey in keys) {
+			var key = keys[opKey];
+			if (!objUtils.isEmpty(key)) {
+				return key;
+			}
 		}
 		else {
 			throw 'There is an unvalid key -' + opKey + '- in rsql string.'
